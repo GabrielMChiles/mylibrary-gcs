@@ -1,0 +1,101 @@
+<div class="conteudo-principal">
+  
+  <div class="cabecalho-tela">
+    <div class="titulos">
+      <h2 class="titulo-pagina">Novo Livro</h2>
+      <p class="subtitulo-pagina">Cadastre uma nova obra no acervo da biblioteca</p>
+    </div>
+  </div>
+
+  <div class="card-formulario">
+    <form [formGroup]="formLivro" (ngSubmit)="salvar()" class="form-grid">
+      
+      <div class="campo-form">
+        <label for="titulo">Título do Livro <span class="obrigatorio">*</span></label>
+        <input 
+          id="titulo" 
+          type="text" 
+          pInputText 
+          formControlName="titulo" 
+          placeholder="Ex: O Senhor dos Anéis" 
+          autocomplete="off" />
+      </div>
+
+      <div class="campo-form">
+        <label for="autor">Autor <span class="obrigatorio">*</span></label>
+        <input 
+          id="autor" 
+          type="text" 
+          pInputText 
+          formControlName="autor" 
+          placeholder="Ex: J.R.R. Tolkien" 
+          autocomplete="off" />
+      </div>
+
+      <div class="linha-dupla">
+        <div class="campo-form flex-1">
+          <label for="isbn">ISBN</label>
+          <input 
+            id="isbn" 
+            type="text" 
+            pInputText 
+            formControlName="isbn" 
+            placeholder="Ex: 978-3-16-148410-0" 
+            autocomplete="off" />
+        </div>
+
+        <div class="campo-form flex-1">
+          <label for="ano">Ano de Publicação <span class="obrigatorio">*</span></label>
+          <input 
+            id="ano" 
+            type="number" 
+            pInputText 
+            formControlName="ano" 
+            placeholder="Ex: 1954" />
+        </div>
+      </div>
+
+      <div class="linha-dupla">
+        <div class="campo-form flex-1">
+          <label for="categoria">Categoria <span class="obrigatorio">*</span></label>
+          <p-select 
+            id="categoria"
+            [options]="categorias" 
+            formControlName="categoriaId" 
+            placeholder="Selecione a seção"
+            styleClass="w-full">
+          </p-select>
+        </div>
+
+        <div class="campo-form flex-1">
+          <label for="status">Status Atual <span class="obrigatorio">*</span></label>
+          <p-select 
+            id="status"
+            [options]="opcoesStatus" 
+            formControlName="status" 
+            styleClass="w-full">
+          </p-select>
+        </div>
+      </div>
+
+      <div class="rodape-form">
+        <p-button 
+          label="Cancelar" 
+          icon="pi pi-times" 
+          severity="secondary" 
+          [outlined]="true"
+          (onClick)="voltar()"
+          type="button">
+        </p-button>
+        
+        <p-button 
+          label="Salvar Livro" 
+          icon="pi pi-check" 
+          type="submit"
+          [disabled]="formLivro.invalid">
+        </p-button>
+      </div>
+
+    </form>
+  </div>
+</div>
