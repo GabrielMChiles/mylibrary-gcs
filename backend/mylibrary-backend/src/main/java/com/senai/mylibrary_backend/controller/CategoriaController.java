@@ -12,8 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/categorias")
-// Importante para permitir que seu Angular em localhost acesse a API
-@CrossOrigin(origins = "*") 
 public class CategoriaController {
 
     private final CategoriaService service;
