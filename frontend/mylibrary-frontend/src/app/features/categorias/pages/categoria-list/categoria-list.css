@@ -1,0 +1,111 @@
+/* O container principal não precisa mais de background, pois o app.css já cuida disso */
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espaço elegante entre o cabeçalho e a tabela */
+}
+
+/* Flexbox para alinhar o título de um lado e o botão do outro */
+.cabecalho-tela {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Alinha o botão pela base do texto */
+}
+
+/* Trazendo o Azul Marinho para o título, conectando com a Navbar */
+.titulo-pagina {
+  margin: 0;
+  color: #0e1e38; 
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* O Cinza Escuro da sua imagem aplicado no subtítulo */
+.subtitulo-pagina {
+  margin: 0.25rem 0 0 0;
+  color: #475569; 
+  font-size: 1rem;
+}
+
+/* O Card Branco puro que vai flutuar sobre o fundo do sistema */
+.card-tabela {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0; /* Bordinha cinza super fina */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Sombra difusa premium */
+}
+
+/* ==========================================================================
+   CUSTOMIZAÇÃO DA TABELA DO PRIMENG
+   ========================================================================== */
+
+/* Deixando o cabeçalho da tabela com o fundo Cinza Claro e texto Cinza Escuro */
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  padding: 1rem !important;
+}
+
+/* Linhas da tabela com borda suave */
+::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 1rem !important;
+}
+
+/* Textos da tabela */
+.texto-id {
+  color: #94a3b8;
+  font-family: monospace; /* Fonte de código para o ID ficar alinhado */
+}
+
+.texto-destaque {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.texto-secundario {
+  color: #64748b;
+}
+
+/* A bolinha de quantidade de livros com a paleta Cinza/Azul Marinho */
+.badge-livros {
+  background-color: #f1f5f9;
+  color: #0e1e38;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid #cbd5e1;
+}
+
+/* ==========================================================================
+   ESTADO VAZIO DA TABELA
+   ========================================================================== */
+.tabela-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4rem 0;
+}
+
+.icone-vazio {
+  font-size: 3rem;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+}
+
+.titulo-vazio {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.subtitulo-vazio {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}

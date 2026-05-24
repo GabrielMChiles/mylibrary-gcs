@@ -1,0 +1,73 @@
+<div class="conteudo-principal">
+  
+  <div class="cabecalho-tela">
+    <div class="titulos">
+      <h2 class="titulo-pagina">Categorias do Acervo</h2>
+      <p class="subtitulo-pagina">Gerencie as seções da sua biblioteca</p>
+    </div>
+    
+    <p-button 
+      label="Nova Categoria" 
+      icon="pi pi-plus" 
+      (onClick)="navegarParaNovaCategoria()">
+    </p-button>
+  </div>
+
+  <div class="card-tabela">
+    <p-table [value]="categorias" [tableStyle]="{ 'min-width': '50rem' }">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 10%">ID</th>
+          <th style="width: 30%">Nome</th>
+          <th style="width: 35%">Descrição</th>
+          <th style="width: 15%; text-align: center;">Qtd. Livros</th>
+          <th style="width: 10%; text-align: center;">Ações</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-categoria>
+        <tr>
+          <td class="texto-id">#{{ categoria.id }}</td>
+          
+          <td>
+            <strong class="texto-destaque">{{ categoria.nome }}</strong>
+          </td>
+          
+          <td class="texto-secundario">{{ categoria.descricao || 'Nenhuma descrição informada.' }}</td>
+          
+          <td style="text-align: center;">
+            <span class="badge-livros">{{ categoria.quantidadeLivros }}</span>
+          </td>
+          
+          <td style="text-align: center;">
+            <p-button
+              icon="pi pi-trash"
+              severity="danger"
+              size="small"
+              [rounded]="true" 
+              [outlined]="true"
+              pTooltip="Excluir Categoria"
+              (onClick)="excluirCategoria(categoria)">
+            </p-button>
+          </td>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="empty">
+        <tr>
+          <td colspan="5">
+            <div class="tabela-vazia">
+              <i class="pi pi-tags icone-vazio"></i>
+              <span class="titulo-vazio">Nenhuma categoria cadastrada.</span>
+              <small class="subtitulo-vazio">Clique em "Nova Categoria" ali em cima para começar!</small>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
