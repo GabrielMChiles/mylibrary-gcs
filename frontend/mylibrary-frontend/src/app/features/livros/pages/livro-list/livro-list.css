@@ -1,0 +1,164 @@
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL E CABEÇALHO
+   ========================================================================== */
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cabecalho-tela {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.titulo-pagina {
+  margin: 0;
+  color: var(--primary-navy); 
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitulo-pagina {
+  margin: 0.25rem 0 0 0;
+  color: var(--text-secondary); 
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   BARRA DE FILTROS
+   ========================================================================== */
+.card-filtros {
+  background: var(--bg-card);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light); 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); 
+}
+
+.grid-filtros {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap; /* Em monitores menores, os filtros descem graciosamente */
+}
+
+.campo-filtro {
+  display: flex;
+  flex-direction: column;
+}
+
+/* A barra de busca funciona como uma mola, preenchendo o espaço vazio */
+.barra-busca {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+/* Posicionamento do ícone de lupa dentro do input */
+.icone-busca {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  z-index: 1;
+}
+
+.barra-busca input {
+  width: 100%;
+  padding-left: 2.5rem !important; /* Afasta o texto para não esmagar a lupa */
+}
+
+/* Padronizando a largura dos Selects para manter simetria */
+::ng-deep .p-select {
+  width: 220px;
+}
+
+.botao-limpar {
+  margin-top: 2px; /* Alinhamento ótico sutil com os inputs ao lado */
+}
+
+/* ==========================================================================
+   CARD DA TABELA
+   ========================================================================== */
+.card-tabela {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light); 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); 
+}
+
+/* Cabeçalho customizado da tabela */
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  background-color: var(--bg-app) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid var(--border-light) !important;
+  padding: 1rem !important;
+}
+
+/* Linhas com divisor sutil */
+::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  border-bottom: 1px solid var(--border-light) !important;
+  padding: 1rem !important;
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E BADGES INTERNAS DA TABELA
+   ========================================================================== */
+.texto-id {
+  color: var(--text-muted);
+  font-family: monospace; 
+}
+
+.texto-destaque {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.texto-secundario {
+  color: var(--text-secondary);
+}
+
+.badge-categoria {
+  background-color: var(--bg-app);
+  color: var(--text-secondary);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border-light);
+}
+
+/* ==========================================================================
+   ESTADO VAZIO INTELIGENTE
+   ========================================================================== */
+.tabela-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4rem 0;
+}
+
+.icone-vazio {
+  font-size: 3rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+}
+
+.titulo-vazio {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.subtitulo-vazio {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

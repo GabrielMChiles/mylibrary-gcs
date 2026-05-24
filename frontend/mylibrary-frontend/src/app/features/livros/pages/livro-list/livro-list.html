@@ -1,0 +1,139 @@
+<div class="conteudo-principal">
+  
+  <div class="cabecalho-tela">
+    <div class="titulos">
+      <h2 class="titulo-pagina">Acervo de Livros</h2>
+      <p class="subtitulo-pagina">Gerencie e filtre todos os títulos da biblioteca</p>
+    </div>
+    
+    <p-button 
+      label="Novo Livro" 
+      icon="pi pi-plus" 
+      severity="primary" 
+
+      (onClick)="irParaNovoLivro()">
+    </p-button>
+  </div>
+
+  <div class="card-filtros">
+    <div class="grid-filtros">
+      
+      <div class="campo-filtro barra-busca">
+        <i class="pi pi-search icone-busca"></i>
+        <input 
+          type="text" 
+          pInputText 
+          [(ngModel)]="filtroBusca" 
+          (input)="aplicarFiltros()" 
+          placeholder="Buscar por título ou autor..." />
+      </div>
+
+      <div class="campo-filtro">
+        <p-select 
+          [options]="categorias" 
+          [(ngModel)]="filtroCategoria" 
+          (onChange)="aplicarFiltros()" 
+          placeholder="Filtrar por Categoria"
+          styleClass="w-full">
+        </p-select>
+      </div>
+
+      <div class="campo-filtro">
+        <p-select 
+          [options]="opcoesStatus" 
+          [(ngModel)]="filtroStatus" 
+          (onChange)="aplicarFiltros()" 
+          styleClass="w-full">
+        </p-select>
+      </div>
+
+      <div class="botao-limpar">
+        <p-button 
+          icon="pi pi-filter-slash" 
+          severity="secondary" 
+          [outlined]="true" 
+          (onClick)="limparFiltros()" 
+          pTooltip="Limpar Filtros">
+        </p-button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card-tabela">
+    <p-table [value]="livros" [tableStyle]="{ 'min-width': '60rem' }">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 8%">ID</th>
+          <th style="width: 25%">Título</th>
+          <th style="width: 20%">Autor</th>
+          <th style="width: 15%">Categoria</th>
+          <th style="width: 10%">Ano</th>
+          <th style="width: 12%; text-align: center;">Status</th>
+          <th style="width: 10%; text-align: center;">Ações</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-livro>
+        <tr>
+          <td class="texto-id">#{{ livro.id }}</td>
+          
+          <td>
+            <strong class="texto-destaque">{{ livro.titulo }}</strong>
+          </td>
+          
+          <td class="texto-secundario">{{ livro.autor }}</td>
+          
+          <td>
+            <span class="badge-categoria">{{ livro.categoriaNome }}</span>
+          </td>
+          
+          <td class="texto-secundario">{{ livro.ano }}</td>
+          
+          <td style="text-align: center;">
+            <p-tag 
+              [value]="livro.status" 
+              [severity]="getSeverityStatus(livro.status)">
+            </p-tag>
+          </td>
+          
+          <td style="text-align: center;">
+            <p-button
+              icon="pi pi-trash"
+              severity="danger"
+              size="small"
+              [rounded]="true" 
+              [outlined]="true"
+              pTooltip="Excluir Livro"
+              (onClick)="excluirLivro(livro)">
+            </p-button>
+          </td>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="empty">
+        <tr>
+          <td colspan="7">
+            <div class="tabela-vazia">
+              
+              @if (filtroBusca || filtroCategoria || filtroStatus !== 'TODOS') {
+                <i class="pi pi-search icone-vazio"></i>
+                <span class="titulo-vazio">Nenhum livro encontrado.</span>
+                <small class="subtitulo-vazio">Tente limpar ou ajustar os filtros de busca.</small>
+              } @else {
+                <i class="pi pi-book icone-vazio"></i>
+                <span class="titulo-vazio">Acervo vazio.</span>
+                <small class="subtitulo-vazio">Cadastre seu primeiro livro clicando no botão acima!</small>
+              }
+              
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
