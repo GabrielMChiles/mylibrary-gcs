@@ -6,7 +6,13 @@ export interface Emprestimo {
   livroTitulo: string;
   nomePessoa: string;
   telefonePessoa: string;
-  dataEmprestimo: string; // Vem como string ISO (YYYY-MM-DD) do backend
+  dataEmprestimo: string; 
   dataDevolucaoPrevista: string;
   dataDevolucaoEfetiva?: string;
+}
+
+export interface EmprestimoRequest {
+  livroId: number;
+  nomePessoa: string;
+  telefonePessoa: string;
 }
