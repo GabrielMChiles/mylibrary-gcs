@@ -1,0 +1,105 @@
+/* ==========================================================================
+   CABEÇALHO CENTRALIZADO
+   ========================================================================== */
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cabecalho-tela {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.titulo-pagina {
+  margin: 0;
+  color: var(--primary-navy); 
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitulo-pagina {
+  margin: 0.25rem 0 0 0;
+  color: var(--text-secondary); 
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   CARD DO FORMULÁRIO
+   ========================================================================== */
+.card-formulario {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light); 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  
+  max-width: 700px; 
+  margin: 0 auto;   
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   GRID DE COLUNAS
+   ========================================================================== */
+.linha-dupla {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .linha-dupla {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   LABELS E INPUTS
+   ========================================================================== */
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo-form label {
+  color: var(--text-secondary); 
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.obrigatorio {
+  color: #ef4444; 
+}
+
+/* Força os componentes do PrimeNG a ocuparem a largura total da sua coluna */
+::ng-deep .p-inputtext, 
+::ng-deep .p-select {
+  width: 100%;
+}
+
+/* ==========================================================================
+   RODAPÉ E BOTÕES
+   ========================================================================== */
+.rodape-form {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}

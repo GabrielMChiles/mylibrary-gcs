@@ -1,0 +1,124 @@
+:host {
+  display: block;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   HEADER / NAVBAR 
+   ========================================================================== */
+.navbar-container {
+  background-color: var(--primary-navy); 
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+::ng-deep .p-menubar {
+  background: transparent !important;
+  border: 1px solid var(--text-secondary) !important;
+  border-radius: 10px !important; 
+  padding: 0.5rem 1.5rem !important;
+  width: max-content !important; 
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+::ng-deep .p-menubar .p-menubar-root-list {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   MENUBAR OVERRIDES & HOVER
+   ========================================================================== */
+::ng-deep .p-menubar .p-menuitem,
+::ng-deep .p-menubar .p-menuitem-content,
+::ng-deep .p-menubar .p-menuitem:hover,
+::ng-deep .p-menubar .p-menuitem-content:hover {
+  background: transparent !important;
+  border: none !important;
+}
+
+::ng-deep .p-menubar .p-menuitem-link {
+  background: transparent !important;
+  color: #cbd5e1 !important;
+  border-radius: 5px !important;
+  padding: 0.5rem 0.5rem !important;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::ng-deep .p-menubar .p-menuitem-link:hover {
+  background-color: #041025 !important; 
+  color: #ffffff !important; 
+}
+
+::ng-deep .p-menubar .p-menuitem-icon {
+  color: #94a3b8 !important; 
+  margin-right: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+::ng-deep .p-menubar .p-menuitem-link:hover .p-menuitem-icon {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   COMPONENTES INTERNOS DA BARRA
+   ========================================================================== */
+.logo-menubar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 !important;
+}
+
+.logo-text {
+  color: var(--bg-card);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.admin-badge {
+  background: transparent;
+  color: var(--accent-blue);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid var(--accent-blue);
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================================== */
+.main-content-horizontal {
+  flex: 1;
+  background-color: var(--bg-app); 
+  width: 100%;
+}
+
+.content-area {
+  max-width: 1200px;         
+  margin: 0 auto;            
+  padding: 2.5rem 1rem;      
+  width: 100%;
+  box-sizing: border-box;
+}
