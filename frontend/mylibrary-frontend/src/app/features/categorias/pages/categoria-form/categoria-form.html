@@ -1,0 +1,57 @@
+<div class="conteudo-principal">
+  
+  <div class="cabecalho-tela">
+    <div class="titulos">
+      <h2 class="titulo-pagina">Nova Categoria</h2>
+      <p class="subtitulo-pagina">Adicione uma nova categoria à biblioteca</p>
+    </div>
+  </div>
+
+  <div class="card-formulario">
+    <form [formGroup]="formCategoria" (ngSubmit)="salvar()" class="form-grid">
+      
+      <div class="campo-form">
+        <label for="nome">Nome da Categoria <span class="obrigatorio">*</span></label>
+        <input 
+          id="nome" 
+          type="text" 
+          pInputText 
+          formControlName="nome" 
+          placeholder="Ex: Ficção Científica" 
+          autocomplete="off" />
+      </div>
+
+      <div class="campo-form">
+        <label for="descricao">Descrição</label>
+        <textarea 
+          id="descricao" 
+          rows="4" 
+          pInputTextarea 
+          formControlName="descricao" 
+          placeholder="Detalhes sobre os livros desta categoria..."
+          [autoResize]="true">
+        </textarea>
+      </div>
+
+      <div class="rodape-form">
+        <p-button 
+          label="Cancelar" 
+          icon="pi pi-times" 
+          severity="secondary" 
+          [outlined]="true"
+          (onClick)="voltar()"
+          type="button">
+        </p-button>
+        
+        <p-button 
+          label="Salvar Categoria" 
+          icon="pi pi-check" 
+          severity="success"
+          type="submit"
+          [disabled]="formCategoria.invalid">
+        </p-button>
+      </div>
+
+    </form>
+  </div>
+</div>
