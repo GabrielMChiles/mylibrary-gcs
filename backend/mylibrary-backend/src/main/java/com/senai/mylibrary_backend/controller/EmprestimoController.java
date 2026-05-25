@@ -35,4 +35,9 @@ public class EmprestimoController {
     public ResponseEntity<List<EmprestimoResponseDTO>> listarHistoricoPorLivro(@PathVariable Long livroId) {
         return ResponseEntity.ok(emprestimoService.listarHistoricoPorLivro(livroId));
     }
+
+    @GetMapping
+    public ResponseEntity<List<EmprestimoResponseDTO>> listarTodos() {
+    return ResponseEntity.ok(emprestimoService.listarTodos());
+}
 }

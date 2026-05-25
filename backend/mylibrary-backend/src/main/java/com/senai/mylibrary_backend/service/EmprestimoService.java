@@ -1,5 +1,6 @@
 package com.senai.mylibrary_backend.service;
 
+import com.senai.mylibrary_backend.dto.CategoriaResponseDTO;
 import com.senai.mylibrary_backend.dto.EmprestimoRequestDTO;
 import com.senai.mylibrary_backend.dto.EmprestimoResponseDTO;
 import com.senai.mylibrary_backend.entity.Emprestimo;
@@ -79,6 +80,13 @@ public class EmprestimoService {
 
         Emprestimo atualizado = emprestimoRepository.save(emprestimo);
         return converterParaResponseDTO(atualizado);
+    }
+
+    public List<EmprestimoResponseDTO> listarTodos() {
+        return emprestimoRepository.findAll()
+                .stream()
+                .map(this::converterParaResponseDTO)
+                .collect(Collectors.toList());
     }
 
     // Histórico
