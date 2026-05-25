@@ -1,6 +1,5 @@
 package com.senai.mylibrary_backend.service;
 
-import com.senai.mylibrary_backend.dto.CategoriaResponseDTO;
 import com.senai.mylibrary_backend.dto.EmprestimoRequestDTO;
 import com.senai.mylibrary_backend.dto.EmprestimoResponseDTO;
 import com.senai.mylibrary_backend.entity.Emprestimo;

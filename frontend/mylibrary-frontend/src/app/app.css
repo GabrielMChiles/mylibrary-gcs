@@ -1,0 +1,115 @@
+:host {
+  display: block;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   HEADER / NAVBAR 
+   ========================================================================== */
+.navbar-container {
+  background-color: var(--primary-navy); 
+  padding: 1.5rem; /* Espaço para a barra flutuante respirar */
+  display: flex;
+  justify-content: center; /* CENTRALIZA A BARRA INTEIRA NA TELA */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* A PÍLULA FLUTUANTE: A borda que envolve o Logo, os Links e o Admin Panel */
+::ng-deep .p-menubar {
+  background: transparent !important;
+  border: 1px solid var(--text-secondary) !important; /* A borda sutil contornando tudo */
+  border-radius: 10px !important; /* Deixa os cantos  arredondados */
+  padding: 0.5rem 1.5rem !important;
+  width: max-content !important; /* Faz a borda esticar apenas o necessário para caber o conteúdo */
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* Espaçamento elegante entre o Logo, o Menu e o Admin Panel */
+}
+
+/* A LISTA DE LINKS: Agora totalmente transparente, sem caixa branca */
+::ng-deep .p-menubar .p-menubar-root-list {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* OS BOTÕES DOS LINKS (Categorias, Livros, etc) */
+::ng-deep .p-menubar .p-menubar-item-link {
+  color: #ffffff !important;
+  border-radius: 5px !important; /* Efeito do mouse fica arredondado também */
+  padding: 0.5rem 0.5rem !important;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+/* Efeito Hover nos Links: Fica levemente iluminado */
+::ng-deep .p-menubar .p-menubar-item-link:hover {
+  background-color: #041025 !important; 
+  color: #ffffff !important; 
+}
+
+/* Ícones dos Links */
+::ng-deep .p-menubar .p-menubar-item-icon {
+  color: #94a3b8 !important; 
+  margin-right: 0.5rem;
+}
+::ng-deep .p-menubar .p-menubar-item-link:hover .p-menubar-item-icon {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   COMPONENTES INTERNOS DA BARRA
+   ========================================================================== */
+.logo-menubar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 !important; /* Remove margens que empurravam o layout */
+}
+
+.logo-text {
+  color: var(--bg-card);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.admin-badge {
+  background: transparent;
+  color: var(--accent-blue);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid var(--accent-blue); /* Borda fininha pra combinar */
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL (Fica centralizado alinhado com a tela)
+   ========================================================================== */
+.main-content-horizontal {
+  flex: 1;
+  background-color: var(--bg-app); 
+  width: 100%;
+}
+
+.content-area {
+  max-width: 1200px;         
+  margin: 0 auto;            
+  padding: 2.5rem 1rem;      
+  width: 100%;
+  box-sizing: border-box;
+}

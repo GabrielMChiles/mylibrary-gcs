@@ -8,7 +8,10 @@ import com.senai.mylibrary_backend.entity.Categoria;
 import com.senai.mylibrary_backend.entity.Livro;
 import com.senai.mylibrary_backend.entity.StatusLivro;
 import com.senai.mylibrary_backend.repository.CategoriaRepository;
+import com.senai.mylibrary_backend.repository.EmprestimoRepository;
 import com.senai.mylibrary_backend.repository.LivroRepository;
+
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,10 +21,14 @@ public class LivroService {
 
     private final LivroRepository livroRepository;
     private final CategoriaRepository categoriaRepository;
+    private final EmprestimoRepository emprestimoRepository;
 
-    public LivroService(LivroRepository livroRepository, CategoriaRepository categoriaRepository) {
+    public LivroService(LivroRepository livroRepository, 
+                        CategoriaRepository categoriaRepository, 
+                        EmprestimoRepository emprestimoRepository) {
         this.livroRepository = livroRepository;
         this.categoriaRepository = categoriaRepository;
+        this.emprestimoRepository = emprestimoRepository; 
     }
 
     // Recebe os filtros opcionais da tela
@@ -92,17 +99,20 @@ public class LivroService {
         return converterParaResponseDTO(livroAtualizado);
     }
 
-    // Trava de seguranca de exclusao
+    @Transactional
     public void excluir(Long id) {
         Livro livro = livroRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Livro nao encontrado com ID: " + id));
+                .orElseThrow(() -> new RuntimeException("Livro não encontrado com ID: " + id));
 
-        // Se o status for qualquer coisa diferente de DISPONIVEL, bloqueia
         if (livro.getStatus() != StatusLivro.DISPONIVEL) {
-            throw new RuntimeException("Nao e possivel excluir um livro com status: " + livro.getStatus() + 
+            throw new RuntimeException("Não e possivel excluir um livro com status: " + livro.getStatus() + 
                     ". Apenas livros DISPONIVEIS podem ser removidos.");
         }
 
+        // Limpa o histórico (a chave estrangeira) ANTES de apagar o livro
+        emprestimoRepository.deletarPorLivroId(id);
+
+        // Agora o banco permite apagar o livro
         livroRepository.delete(livro);
     }
 
