@@ -9,8 +9,6 @@
     <p-button 
       label="Novo Livro" 
       icon="pi pi-plus" 
-      severity="primary" 
-
       (onClick)="irParaNovoLivro()">
     </p-button>
   </div>
@@ -66,30 +64,20 @@
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 8%">ID</th>
-          <th style="width: 25%">Título</th>
-          <th style="width: 20%">Autor</th>
+          <th style="width: 28%">Título</th>
+          <th style="width: 22%">Autor</th>
           <th style="width: 15%">Categoria</th>
-          <th style="width: 10%">Ano</th>
           <th style="width: 12%; text-align: center;">Status</th>
-          <th style="width: 10%; text-align: center;">Ações</th>
+          <th style="width: 15%; text-align: center;">Ações</th>
         </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-livro>
         <tr>
           <td class="texto-id">#{{ livro.id }}</td>
-          
-          <td>
-            <strong class="texto-destaque">{{ livro.titulo }}</strong>
-          </td>
-          
+          <td><strong class="texto-destaque">{{ livro.titulo }}</strong></td>
           <td class="texto-secundario">{{ livro.autor }}</td>
-          
-          <td>
-            <span class="badge-categoria">{{ livro.categoriaNome }}</span>
-          </td>
-          
-          <td class="texto-secundario">{{ livro.ano }}</td>
+          <td><span class="badge-categoria">{{ livro.categoriaNome }}</span></td>
           
           <td style="text-align: center;">
             <p-tag 
@@ -99,24 +87,46 @@
           </td>
           
           <td style="text-align: center;">
-            <p-button
-              icon="pi pi-trash"
-              severity="danger"
-              size="small"
-              [rounded]="true" 
-              [outlined]="true"
-              pTooltip="Excluir Livro"
-              (onClick)="excluirLivro(livro)">
-            </p-button>
+            <div style="display: flex; justify-content: center; gap: 0.4rem;">
+              
+              <p-button
+                icon="pi pi-eye"
+                severity="info"
+                size="small"
+                [rounded]="true" 
+                [outlined]="true"
+                pTooltip="Visualizar Detalhes"
+                (onClick)="visualizarLivro(livro)">
+              </p-button>
+
+              <p-button
+                icon="pi pi-history"
+                severity="secondary"
+                size="small"
+                [rounded]="true" 
+                [outlined]="true"
+                pTooltip="Ver Histórico de Empréstimos"
+                (onClick)="abrirHistorico(livro)">
+              </p-button>
+
+              <p-button
+                icon="pi pi-trash"
+                severity="danger"
+                size="small"
+                [rounded]="true" 
+                [outlined]="true"
+                pTooltip="Excluir Livro"
+                (onClick)="excluirLivro(livro)">
+              </p-button>
+            </div>
           </td>
         </tr>
       </ng-template>
       
       <ng-template pTemplate="empty">
         <tr>
-          <td colspan="7">
+          <td colspan="6">
             <div class="tabela-vazia">
-              
               @if (filtroBusca || filtroCategoria || filtroStatus !== 'TODOS') {
                 <i class="pi pi-search icone-vazio"></i>
                 <span class="titulo-vazio">Nenhum livro encontrado.</span>
@@ -126,7 +136,6 @@
                 <span class="titulo-vazio">Acervo vazio.</span>
                 <small class="subtitulo-vazio">Cadastre seu primeiro livro clicando no botão acima!</small>
               }
-              
             </div>
           </td>
         </tr>
@@ -135,5 +144,135 @@
     </p-table>
   </div>
 </div>
+
+<p-dialog 
+  header="Detalhes da Obra" 
+  [(visible)]="exibirModalVisualizar" 
+  [modal]="true" 
+  [style]="{ width: '450px' }"
+  [draggable]="false"
+  [resizable]="false">
+  
+  @if (livroDetalhe) {
+    <div style="display: flex; flex-direction: column; gap: 1.2rem; padding-top: 1rem;">
+      
+      <div>
+        <small style="color: var(--text-muted); font-weight: 600;">CÓDIGO INTERNO (ID)</small>
+        <p class="m-0 font-mono text-lg" style="color: var(--text-main);">#{{ livroDetalhe.id }}</p>
+      </div>
+
+      <div>
+        <small style="color: var(--text-muted); font-weight: 600;">TÍTULO</small>
+        <p class="m-0 text-xl font-bold" style="color: var(--primary-navy);">{{ livroDetalhe.titulo }}</p>
+      </div>
+
+      <div>
+        <small style="color: var(--text-muted); font-weight: 600;">AUTOR</small>
+        <p class="m-0 text-base font-semibold" style="color: var(--text-main);">{{ livroDetalhe.autor }}</p>
+      </div>
+
+      <div style="display: flex; gap: 2rem;">
+        <div style="flex: 1;">
+          <small style="color: var(--text-muted); font-weight: 600;">ANO</small>
+          <p class="m-0 text-base" style="color: var(--text-main);">{{ livroDetalhe.ano }}</p>
+        </div>
+        <div style="flex: 1;">
+          <small style="color: var(--text-muted); font-weight: 600;">ISBN</small>
+          <p class="m-0 text-base" style="color: var(--text-main);">{{ livroDetalhe.isbn || 'Não Informado' }}</p>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 2rem; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1rem;">
+        <div style="flex: 1;">
+          <small style="color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 0.2rem;">CATEGORIA</small>
+          <span class="badge-categoria">{{ livroDetalhe.categoriaNome }}</span>
+        </div>
+        <div style="flex: 1;">
+          <small style="color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 0.2rem;">STATUS ATUAL</small>
+          <p-tag [value]="livroDetalhe.status" [severity]="getSeverityStatus(livroDetalhe.status)"></p-tag>
+        </div>
+      </div>
+
+    </div>
+  }
+
+  <ng-template pTemplate="footer">
+    <p-button label="Fechar" icon="pi pi-times" (onClick)="exibirModalVisualizar = false"></p-button>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog 
+  header="Histórico de Empréstimos" 
+  [(visible)]="exibirModalHistorico" 
+  [modal]="true" 
+  [style]="{ width: '65vw' }" 
+  [draggable]="false" 
+  [resizable]="false">
+  
+  <div class="mb-4">
+    <p class="m-0 text-secondary">Mostrando o registro de locações para a obra:</p>
+    <h3 class="mt-1 mb-0" style="color: var(--primary-navy);">{{ livroSelecionadoTitulo }}</h3>
+  </div>
+
+  <p-table 
+    [value]="historicoEmprestimos" 
+    [loading]="carregandoHistorico"
+    [paginator]="true" 
+    [rows]="5" 
+    styleClass="p-datatable-sm">
+    
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Leitor</th>
+        <th>Telefone</th>
+        <th>Retirada</th>
+        <th>Previsão</th>
+        <th style="text-align: center;">Devolução</th>
+        <th style="text-align: center;">Status da Locação</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-emp>
+      <tr>
+        <td style="font-weight: 600;">{{ emp.nomePessoa }}</td>
+        <td>{{ emp.telefonePessoa }}</td>
+        <td>{{ emp.dataEmprestimo | date:'dd/MM/yyyy':'UTC' }}</td>
+        <td>{{ emp.dataDevolucaoPrevista | date:'dd/MM/yyyy':'UTC' }}</td>
+        
+        <td style="text-align: center;">
+          @if (emp.dataDevolucaoEfetiva) {
+            <span style="color: #22c55e; font-weight: 700;">{{ emp.dataDevolucaoEfetiva | date:'dd/MM/yyyy':'UTC' }}</span>
+          } @else {
+            <span style="color: var(--text-muted);">-</span>
+          }
+        </td>
+
+        <td style="text-align: center;">
+          @if (emp.dataDevolucaoEfetiva) {
+            <p-tag value="Devolvido" severity="success"></p-tag>
+          } @else {
+            <p-tag value="Em Andamento" severity="warn"></p-tag>
+          }
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="empty">
+      <tr>
+        <td colspan="6" style="text-align: center; padding: 3rem 1rem;">
+          <i class="pi pi-box mb-2" style="font-size: 2rem; color: var(--text-muted); opacity: 0.6;"></i>
+          <p class="m-0" style="font-weight: 600; color: var(--text-secondary);">Nenhum empréstimo registrado.</p>
+          <small style="color: var(--text-muted);">Este livro ainda não foi locado por ninguém.</small>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Fechar" icon="pi pi-times" severity="secondary" [outlined]="true" (onClick)="exibirModalHistorico = false"></p-button>
+  </ng-template>
+</p-dialog>
 
 <p-confirmDialog></p-confirmDialog>
