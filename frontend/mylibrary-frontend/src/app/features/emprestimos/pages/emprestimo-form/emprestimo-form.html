@@ -1,0 +1,43 @@
+<div class="conteudo-principal" style="max-width: 600px; margin: 0 auto;">
+  
+  <div class="cabecalho-tela mb-4">
+    <div class="titulos">
+      <h2 class="titulo-pagina">Nova Locação</h2>
+      <p class="subtitulo-pagina">Registre a saída de um livro do acervo</p>
+    </div>
+  </div>
+
+  <div class="card-tabela" style="padding: 2rem;">
+    <form [formGroup]="formEmprestimo" (ngSubmit)="salvar()" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label style="color: var(--text-secondary); font-weight: 600;">Obra Disponível <span style="color: #ef4444;">*</span></label>
+        <p-select 
+          [options]="livrosDisponiveis" 
+          formControlName="livroId" 
+          placeholder="Selecione o livro"
+          styleClass="w-full">
+        </p-select>
+        @if (livrosDisponiveis.length === 0) {
+          <small style="color: #ef4444;">Nenhum livro disponível no momento.</small>
+        }
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label style="color: var(--text-secondary); font-weight: 600;">Nome do Leitor <span style="color: #ef4444;">*</span></label>
+        <input type="text" pInputText formControlName="nomePessoa" placeholder="Ex: Maria Silva" />
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <label style="color: var(--text-secondary); font-weight: 600;">Telefone Contato <span style="color: #ef4444;">*</span></label>
+        <input type="text" pInputText formControlName="telefonePessoa" placeholder="Ex: (00) 90000-0000" />
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 1.5rem;">
+        <p-button label="Cancelar" icon="pi pi-arrow-left" severity="secondary" [outlined]="true" (onClick)="cancelar()"></p-button>
+        <p-button label="Confirmar Locação" icon="pi pi-check" type="submit" [disabled]="formEmprestimo.invalid"></p-button>
+      </div>
+
+    </form>
+  </div>
+</div>
