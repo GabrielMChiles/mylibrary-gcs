@@ -1,85 +1,75 @@
-/* O container principal não precisa mais de background, pois o app.css já cuida disso */
 .conteudo-principal {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Espaço elegante entre o cabeçalho e a tabela */
+  gap: 1.5rem;
 }
 
-/* Flexbox para alinhar o título de um lado e o botão do outro */
 .cabecalho-tela {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; /* Alinha o botão pela base do texto */
+  align-items: flex-end;
 }
 
-/* Trazendo o Azul Marinho para o título, conectando com a Navbar */
 .titulo-pagina {
   margin: 0;
-  color: #0e1e38; 
+  color: var(--primary-navy); 
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 
-/* O Cinza Escuro da sua imagem aplicado no subtítulo */
 .subtitulo-pagina {
   margin: 0.25rem 0 0 0;
-  color: #475569; 
+  color: var(--text-secondary); 
   font-size: 1rem;
 }
 
-/* O Card Branco puro que vai flutuar sobre o fundo do sistema */
 .card-tabela {
-  background: #ffffff;
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: 12px;
-  border: 1px solid #e2e8f0; /* Bordinha cinza super fina */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Sombra difusa premium */
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 /* ==========================================================================
    CUSTOMIZAÇÃO DA TABELA DO PRIMENG
    ========================================================================== */
-
-/* Deixando o cabeçalho da tabela com o fundo Cinza Claro e texto Cinza Escuro */
 ::ng-deep .p-datatable .p-datatable-thead > tr > th {
-  background-color: #f8fafc !important;
-  color: #475569 !important;
+  background-color: var(--bg-app) !important;
+  color: var(--text-secondary) !important;
   font-weight: 600 !important;
-  border-bottom: 2px solid #e2e8f0 !important;
+  border-bottom: 2px solid var(--border-light) !important;
   padding: 1rem !important;
 }
 
-/* Linhas da tabela com borda suave */
 ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
-  border-bottom: 1px solid #f1f5f9 !important;
+  border-bottom: 1px solid var(--border-light) !important;
   padding: 1rem !important;
 }
 
-/* Textos da tabela */
 .texto-id {
-  color: #94a3b8;
-  font-family: monospace; /* Fonte de código para o ID ficar alinhado */
+  color: var(--text-muted);
+  font-family: monospace;
 }
 
 .texto-destaque {
-  color: #0f172a;
+  color: var(--text-main);
   font-weight: 600;
 }
 
 .texto-secundario {
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
-/* A bolinha de quantidade de livros com a paleta Cinza/Azul Marinho */
 .badge-livros {
-  background-color: #f1f5f9;
-  color: #0e1e38;
+  background-color: var(--bg-app);
+  color: var(--primary-navy);
   padding: 0.35rem 0.8rem;
   border-radius: 20px;
   font-weight: 600;
   font-size: 0.875rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-light);
 }
 
 /* ==========================================================================
@@ -95,17 +85,17 @@
 
 .icone-vazio {
   font-size: 3rem;
-  color: #cbd5e1;
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
 
 .titulo-vazio {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #475569;
+  color: var(--text-secondary);
 }
 
 .subtitulo-vazio {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }

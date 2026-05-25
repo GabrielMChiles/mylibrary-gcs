@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Categoria } from '../models/categoria.model';
@@ -7,27 +7,27 @@ import { Categoria } from '../models/categoria.model';
   providedIn: 'root'
 })
 export class CategoriaService {
-
-  // pegando o HttpClient
-  private http = inject(HttpClient);
-
-  // url da nossa api q roda no spring. 
+  
   private apiUrl = 'http://localhost:8080/api/categorias';
 
-  // endpoint q traz todas as categorias
-  // ja vem com a qtd de livros calculada pelo DTO do back
+  constructor(private http: HttpClient) {}
+
   listarCategorias(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.apiUrl);
   }
 
-  // manda a categoria nova pro spring salvar. 
-  // o back devolve a categoria ja com o ID gerado no banco
+  buscarPorId(id: number): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.apiUrl}/${id}`);
+  }
+
   cadastrarCategoria(categoria: Categoria): Observable<Categoria> {
     return this.http.post<Categoria>(this.apiUrl, categoria);
   }
 
-  // exclui a categoria pelo id. 
-  // obs: se a categoria tiver livros vinculados, o back vai barrar e devolver erro
+  atualizarCategoria(id: number, categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, categoria);
+  }
+
   excluirCategoria(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

@@ -28,7 +28,6 @@ export class CategoriaForm implements OnInit {
   // variavel q vai segurar os dados da tela
   formCategoria!: FormGroup;
 
-  // mantendo o construtor pra nao bugar a injeção do vite
   constructor(
     private fb: FormBuilder,
     private categoriaService: CategoriaService,
@@ -37,7 +36,7 @@ export class CategoriaForm implements OnInit {
   ) {}
 
   ngOnInit() {
-    // montando as regras do form. nome é obrigatorio
+    // Nome é obrigatorio
     this.formCategoria = this.fb.group({
       nome: ['', Validators.required],
       descricao: ['']
@@ -56,7 +55,7 @@ export class CategoriaForm implements OnInit {
       return;
     }
 
-    // pega os valores digitados e manda pro back
+    // Pega os valores digitados e manda pro back
     const dados = this.formCategoria.value;
     
     this.categoriaService.cadastrarCategoria(dados).subscribe({

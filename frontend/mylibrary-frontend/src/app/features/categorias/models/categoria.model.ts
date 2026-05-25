@@ -1,6 +1,6 @@
 export interface Categoria {
-  id?: number;          // Opcional (?) porque ao criar uma categoria nova, ela ainda não tem ID
+  id?: number;
   nome: string;
-  descricao?: string;   // Opcional pq nos RF não obriga a descrição
-  quantidadeLivros?: number; // Retornado pelo backend no DTO para exibição na lista
+  descricao?: string;
+  quantidadeLivros?: number;
 }

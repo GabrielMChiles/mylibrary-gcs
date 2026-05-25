@@ -2,7 +2,7 @@
    CABEÇALHO CENTRALIZADO
    ========================================================================== */
 .cabecalho-tela {
-  text-align: center; /* Centraliza os textos do título */
+  text-align: center;
   margin-bottom: 2.5rem;
 }
 
@@ -31,7 +31,7 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   
   max-width: 500px;
-  margin: 0 auto;   /* Joga o card exatamente pro meio da tela */
+  margin: 0 auto;
 }
 
 .form-grid {
@@ -41,7 +41,7 @@
 }
 
 /* ==========================================================================
-   LABELS E INPUTS (Matando o preto feio)
+   LABELS E INPUTS
    ========================================================================== */
 .campo-form {
   display: flex;
@@ -49,7 +49,6 @@
   gap: 0.5rem;
 }
 
-/* Labels agora com o cinza elegante da nossa paleta e sem fundo */
 .campo-form label {
   color: var(--text-secondary); 
   font-weight: 600;
@@ -57,7 +56,7 @@
 }
 
 .obrigatorio {
-  color: #ef4444; /* Vermelhinho de atenção */
+  color: #ef4444;
 }
 
 /* ==========================================================================
