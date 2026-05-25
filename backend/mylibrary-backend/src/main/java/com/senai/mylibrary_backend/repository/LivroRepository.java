@@ -28,4 +28,8 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
             @Param("status") StatusLivro status,
             @Param("busca") String busca
     );
+
+    // Conta livros por status de
+    long countByStatus(StatusLivro status);
+
 }

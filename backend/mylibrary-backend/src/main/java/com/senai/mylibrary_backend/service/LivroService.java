@@ -110,7 +110,7 @@ public class LivroService {
         }
 
         // Limpa o histórico (a chave estrangeira) ANTES de apagar o livro
-        emprestimoRepository.deletarPorLivroId(id);
+        emprestimoRepository.deleteByLivroId(id);
 
         // Agora o banco permite apagar o livro
         livroRepository.delete(livro);
