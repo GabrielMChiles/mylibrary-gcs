@@ -55,6 +55,7 @@ public class LivroService {
         return converterParaResponseDTO(livro);
     }
 
+    // Comentário simulando a correção do bug
     public LivroResponseDTO salvar(LivroRequestDTO dto) {
         if (dto.categoriaId() == null) {
             throw new RuntimeException("O livro precisa estar vinculado a uma categoria.");
@@ -69,7 +70,7 @@ public class LivroService {
         livro.setIsbn(dto.isbn());
         livro.setAno(dto.ano());
         
-        // Garantindo que sempre nasça dispon no cadastro inicial
+        // Garantindo que sempre nasça disponivel no cadastro inicial
         livro.setStatus(StatusLivro.DISPONIVEL);
         livro.setCategoria(categoria);
 
