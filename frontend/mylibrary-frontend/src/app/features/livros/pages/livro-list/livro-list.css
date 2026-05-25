@@ -42,7 +42,7 @@
   display: flex;
   gap: 0.6rem;
   align-items: center;
-  flex-wrap: wrap; /* Em monitores menores, os filtros descem graciosamente */
+  flex-wrap: wrap;
 }
 
 .campo-filtro {
@@ -50,14 +50,12 @@
   flex-direction: column;
 }
 
-/* A barra de busca funciona como uma mola, preenchendo o espaço vazio */
 .barra-busca {
   flex: 1;
   min-width: 250px;
   position: relative;
 }
 
-/* Posicionamento do ícone de lupa dentro do input */
 .icone-busca {
   position: absolute;
   left: 1rem;
@@ -69,16 +67,15 @@
 
 .barra-busca input {
   width: 100%;
-  padding-left: 2.5rem !important; /* Afasta o texto para não esmagar a lupa */
+  padding-left: 2.5rem !important;
 }
 
-/* Padronizando a largura dos Selects para manter simetria */
 ::ng-deep .p-select {
   width: 220px;
 }
 
 .botao-limpar {
-  margin-top: 2px; /* Alinhamento ótico sutil com os inputs ao lado */
+  margin-top: 2px;
 }
 
 /* ==========================================================================
@@ -92,7 +89,6 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); 
 }
 
-/* Cabeçalho customizado da tabela */
 ::ng-deep .p-datatable .p-datatable-thead > tr > th {
   background-color: var(--bg-app) !important;
   color: var(--text-secondary) !important;
@@ -101,14 +97,13 @@
   padding: 1rem !important;
 }
 
-/* Linhas com divisor sutil */
 ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
   border-bottom: 1px solid var(--border-light) !important;
   padding: 1rem !important;
 }
 
 /* ==========================================================================
-   TIPOGRAFIA E BADGES INTERNAS DA TABELA
+   TIPOGRAFIA DA TABELA
    ========================================================================== */
 .texto-id {
   color: var(--text-muted);
@@ -135,7 +130,7 @@
 }
 
 /* ==========================================================================
-   ESTADO VAZIO INTELIGENTE
+   ESTADO VAZIO
    ========================================================================== */
 .tabela-vazia {
   display: flex;

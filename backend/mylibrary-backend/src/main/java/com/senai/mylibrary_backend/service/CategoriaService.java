@@ -16,7 +16,6 @@ public class CategoriaService {
 
     private final CategoriaRepository repository;
 
-    // Injeção de dependência via construtor 
     public CategoriaService(CategoriaRepository repository) {
         this.repository = repository;
     }

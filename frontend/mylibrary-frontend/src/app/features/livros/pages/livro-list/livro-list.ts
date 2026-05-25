@@ -50,14 +50,14 @@ export class LivroList implements OnInit {
   filtroCategoria: number | null = null;
   filtroStatus: string = 'TODOS';
 
-  // Ajustado: Apenas os status reais pedidos pelo professor
+  // Apenas os status reais pedidos pelo professor
   opcoesStatus = [
     { label: 'Todos os Status', value: 'TODOS' },
     { label: 'Disponível', value: 'DISPONIVEL' },
     { label: 'Emprestado', value: 'EMPRESTADO' }
   ];
 
-  // Controle do Modal de Histórico (CA02.7)
+  // Controle do Modal de Histórico
   exibirModalHistorico: boolean = false;
   livroSelecionadoTitulo: string = '';
   historicoEmprestimos: Emprestimo[] = [];
@@ -119,7 +119,7 @@ export class LivroList implements OnInit {
     this.exibirModalVisualizar = true;
   }
 
-  // Abre o modal de Histórico de Empréstimos (CA02.7)
+  // Abre o modal de Histórico de Empréstimos
   abrirHistorico(livro: Livro) {
     this.livroSelecionadoTitulo = livro.titulo;
     this.exibirModalHistorico = true;
@@ -162,7 +162,6 @@ export class LivroList implements OnInit {
     });
   }
 
-  // Ajustado: Removido o case do Reservado
   getSeverityStatus(status: StatusLivro | undefined): 'success' | 'warn' | 'secondary' {
     switch (status) {
       case StatusLivro.DISPONIVEL: return 'success';

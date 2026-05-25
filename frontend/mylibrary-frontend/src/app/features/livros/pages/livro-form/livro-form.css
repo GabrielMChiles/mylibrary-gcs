@@ -27,7 +27,7 @@
 }
 
 /* ==========================================================================
-   CARD DO FORMULÁRIO (Ilha centralizada no Boxed Layout)
+   CARD DO FORMULÁRIO
    ========================================================================== */
 .card-formulario {
   background: var(--bg-card);
@@ -36,7 +36,6 @@
   border: 1px solid var(--border-light); 
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   
-  /* Um pouco mais largo que o form de categorias para acomodar as colunas */
   max-width: 700px; 
   margin: 0 auto;   
 }
@@ -48,7 +47,7 @@
 }
 
 /* ==========================================================================
-   GRID DE COLUNAS (O toque de UI/UX para evitar formulários longos)
+   GRID DE COLUNAS
    ========================================================================== */
 .linha-dupla {
   display: flex;
@@ -57,10 +56,10 @@
 }
 
 .flex-1 {
-  flex: 1; /* Divide o espaço 50/50 entre os dois campos */
+  flex: 1;
 }
 
-/* Responsividade inteligente: em celulares, as colunas descem uma sob a outra */
+/* Responsividade */
 @media (max-width: 600px) {
   .linha-dupla {
     flex-direction: column;
@@ -87,7 +86,7 @@
   color: #ef4444; 
 }
 
-/* Forçando os componentes do PrimeNG a ocuparem a largura total da sua coluna */
+/* Força os componentes do PrimeNG a ocuparem a largura total da sua coluna */
 ::ng-deep .p-inputtext, 
 ::ng-deep .p-select {
   width: 100%;

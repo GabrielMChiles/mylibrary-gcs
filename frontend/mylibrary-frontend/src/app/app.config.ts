@@ -11,7 +11,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // O sistema de detecção de mudanças
+    // detecção de mudanças
     provideZoneChangeDetection({ eventCoalescing: true }),
 
     provideBrowserGlobalErrorListeners(),

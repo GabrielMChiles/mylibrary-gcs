@@ -75,7 +75,7 @@ export class EmprestimoGestao implements OnInit {
   }
 
   abrirModalNovo() {
-    // Ao abrir o modal, buscamos APENAS livros com status DISPONIVEL (CA03.1)
+    // Ao abrir o modal, buscamos APENAS livros com status DISPONIVEL
     this.livroService.listarComFiltros(undefined, StatusLivro.DISPONIVEL).subscribe({
       next: (res: Livro[]) => {
         this.livrosDisponiveis = res.map(l => ({ label: l.titulo, value: l.id }));
