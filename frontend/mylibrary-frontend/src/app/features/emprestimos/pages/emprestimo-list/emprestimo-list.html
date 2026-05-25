@@ -1,0 +1,53 @@
+<div class="conteudo-principal">
+  <div class="cabecalho-tela">
+    <div class="titulos">
+      <h2 class="titulo-pagina">Gestão de Empréstimos</h2>
+      <p class="subtitulo-pagina">Controle de locações e devoluções do acervo</p>
+    </div>
+    <p-button label="Nova Locação" icon="pi pi-plus" (onClick)="irParaNovoEmprestimo()"></p-button>
+  </div>
+
+  <div class="card-tabela">
+    <p-table [value]="emprestimos" [paginator]="true" [rows]="10" styleClass="p-datatable-sm">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th><th>Livro</th><th>Leitor</th><th>Retirada</th><th>Previsão</th>
+          <th style="text-align: center;">Status</th><th style="text-align: center;">Ação</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-emp>
+        <tr>
+          <td class="texto-id">#{{ emp.id }}</td>
+          <td><strong class="texto-destaque">{{ emp.livroTitulo }}</strong></td>
+          <td>
+            <div style="display: flex; flex-direction: column;">
+              <span>{{ emp.nomePessoa }}</span>
+              <small class="texto-muted">{{ emp.telefonePessoa }}</small>
+            </div>
+          </td>
+          <td>{{ emp.dataEmprestimo | date:'dd/MM/yyyy':'UTC' }}</td>
+          <td>{{ emp.dataDevolucaoPrevista | date:'dd/MM/yyyy':'UTC' }}</td>
+          <td style="text-align: center;">
+            @if (emp.dataDevolucaoEfetiva) {
+              <p-tag value="Devolvido ({{ emp.dataDevolucaoEfetiva | date:'dd/MM' }})" severity="success"></p-tag>
+            } @else {
+              <p-tag value="Em Andamento" severity="warn"></p-tag>
+            }
+          </td>
+          <td style="text-align: center;">
+            @if (!emp.dataDevolucaoEfetiva) {
+              <p-button icon="pi pi-check" label="Devolver" severity="success" size="small" [outlined]="true" (onClick)="confirmarDevolucao(emp)"></p-button>
+            } @else {
+              <span class="texto-muted">Concluído</span>
+            }
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="empty">
+        <tr><td colspan="7" class="text-center p-4">Nenhum empréstimo registrado.</td></tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+<p-confirmDialog></p-confirmDialog>
