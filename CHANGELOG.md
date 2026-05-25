@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.1] - 2026-05-25
+### Fixed
+- Corrigida falha de validação no Service Layer que permitia a exclusão de livros com status EMPRESTADO (#7)
+
 ## [1.0.0] - 2026-05-25
 ### Added
 - RF01: CRUD Categorias com validação de exclusão (#1)
